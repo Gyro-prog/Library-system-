@@ -1,0 +1,110 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+//user
+class user{
+
+public:
+    string name;
+    int id;
+    string email;
+user(int userid, string username, string useremail){
+  name=username,  id=userid, email=useremail;
+}};
+
+ //book
+class book{
+ public:
+ int id;
+ string title; 
+ string author;
+ bool isBorrowed;
+
+ book( int bookid, string booktitle, string bookauthor){
+    id=bookid, title=booktitle, author=bookauthor, isBorrowed=false;
+ }};
+
+//library
+class library{
+    private:
+    vector<book> books;
+    vector<user> users;
+
+    //adding books and users
+public:
+int bookid;
+string booktitle;   
+string bookauthor;
+int userid;
+string username;
+
+void addbook(int bookid, string booktitle, string bookauthor){
+    books.push_back(book(bookid, booktitle, bookauthor));
+    cout<<booktitle<<" by "<<bookauthor<< " added successfuly."<<endl;
+
+}
+void adduser(int userid, string username, string useremail){
+    users.push_back(user(userid, username, useremail));
+    cout<<"User:"<<username<<" added successfuly." <<endl;
+}
+// removing books and users.
+void removebook(int bookid, string booktitle, string bookauthor){
+    cout<<booktitle<<"by "<<bookauthor<<" removed successfuly."<<endl;
+}
+void removeuser(int userid, string username,  string useremail){
+    cout<<"User: "<<username<<" removed successfuly."<<endl;}
+
+//borrowing books
+void borrowbook(int id) {
+        for (auto &book : books) {
+            if (book.id == id) {
+                if (!book.isBorrowed) {
+                    book.isBorrowed = true;
+                    cout << "Book borrowed successfully!" << endl;
+                } else {
+                    cout << "Book is already borrowed!" << endl;
+                };
+}
+        }};
+
+//returning books
+void returnbook(int id){
+    for(auto &book: books){
+        if(book.id==id){
+            if(book.isBorrowed){
+                book.isBorrowed=false;
+                cout<<"Book returned successfully!"<<endl;
+            }else{
+                cout<<"Book is not borrowed by user!"<<endl;
+            };
+        }
+}
+}
+//list of available books
+
+};
+
+
+int main()
+{
+library lib;//object of library
+//adding books.
+lib.addbook(001, "The River Between", "Ngugi wa Thiong'o");
+lib.addbook(002, "A Man of The People", "Chinua Achebe");
+//removing books
+lib.removebook(002,"A Man of The People", "Chinua Achebe");
+
+lib.adduser(12345678, "Kim", "kim@gmail.com" );
+lib.removeuser(12345678, "Kim", "kim@gmail.com");
+
+//borrowing books
+lib.borrowbook(001);
+lib.borrowbook(001);
+lib.returnbook(001);
+lib.returnbook(001);
+
+ return 0;   
+}
