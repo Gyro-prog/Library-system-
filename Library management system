@@ -4,7 +4,7 @@
 
 using namespace std;
 
-//user
+//user class
 class user{
 
 public:
