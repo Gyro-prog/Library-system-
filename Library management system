@@ -15,7 +15,7 @@ user(int userid, string username, string useremail){
   name=username,  id=userid, email=useremail;
 }};
 
- //book
+ //book class
 class book{
  public:
  int id;
@@ -27,7 +27,7 @@ class book{
     id=bookid, title=booktitle, author=bookauthor, isBorrowed=false;
  }};
 
-//library
+//library class
 class library{
     private:
     vector<book> books;
